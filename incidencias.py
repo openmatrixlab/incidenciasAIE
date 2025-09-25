@@ -1,9 +1,9 @@
+import streamlit as st
 import os
 import io
 import warnings
 import pandas as pd
 import geopandas as gpd
-import streamlit as st
 import concurrent.futures
 import tempfile
 import zipfile
@@ -12,6 +12,9 @@ import atexit
 from functools import partial
 from typing import Optional, List, Dict
 
+# Configuración de página debe ser lo primero
+st.set_page_config(page_title="Incidencia CBML", layout="wide")
+
 # Función para limpiar recursos temporales al salir
 def cleanup_temp_resources():
     if "temp_gdb_dir" in st.session_state and os.path.exists(st.session_state.temp_gdb_dir):
@@ -19,7 +22,6 @@ def cleanup_temp_resources():
             shutil.rmtree(st.session_state.temp_gdb_dir)
         except Exception as e:
             print(f"Error al limpiar recursos temporales: {e}")
-
 # Registrar la función para ejecutarse al salir
 atexit.register(cleanup_temp_resources)
 
