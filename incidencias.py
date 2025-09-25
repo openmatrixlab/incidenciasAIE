@@ -298,7 +298,6 @@ def to_excel_bytes(df_long: pd.DataFrame, df_wide: pd.DataFrame) -> bytes:
     return buf.getvalue()
 
 # ============ UI Streamlit ============
-st.set_page_config(page_title="Incidencia CBML", layout="wide")
 st.title("Análisis de Incidencias — Equipo AIE-DAP")
 
 gdb_path = ""  # Valor por defecto inicial
